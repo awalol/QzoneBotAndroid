@@ -1,5 +1,6 @@
 package cn.awalol.qzoneBot
 
+import android.util.Log
 import cn.awalol.qzoneBot.bean.qqMusic.songInfo.SongInfo
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.ktor.client.*
@@ -22,6 +23,7 @@ object QzoneBot{
     val singerBlackList = listOf("0011jjK40orUJx","002nXp292LIOGV","0022eAG537I1bg","0039JTTG0s4SCv")
     val client = HttpClient(CIO)
     val waitToRepublish : HashMap<String,Image?> = HashMap()
+
     fun start(bot: Bot){
         bot.globalEventChannel().filter { event: Event -> event is FriendMessageEvent || event is StrangerMessageEvent }.subscribeAlways<MessageEvent> {
             var image : Image? = null
